@@ -7,10 +7,10 @@
 首先我是自定义了一个灰度发布的sdk,引入该包可以实现，指定服务灰度发布，并指定灰度权重
 
 ## 项目结构说明
-####1,test-gateway 网关服务主要控制灰度发布权重
-####2,test-springboot-gray 需要灰度的服务
-####2,test-springboot-normal 不需要灰度的服务
-####2,test-springboot-normal2 不需要灰度的服务2
+#### 1,test-gateway 网关服务主要控制灰度发布权重
+#### 2,test-springboot-gray 需要灰度的服务
+#### 3,test-springboot-normal 不需要灰度的服务
+#### 4,test-springboot-normal2 不需要灰度的服务2
 
 ## 技术细节
 
