@@ -6,30 +6,40 @@
 有什么功能
 首先我是自定义了一个灰度发布的sdk,引入该包可以实现，指定服务灰度发布，并指定灰度权重
 
+##项目结构说明
+####1,test-gateway 网关服务主要控制灰度发布权重
+####2,test-springboot-gray 需要灰度的服务
+####2,test-springboot-normal 不需要灰度的服务
+####2,test-springboot-normal2 不需要灰度的服务2
+
 ##技术细节
 
 ####1.在网关中引入灰度发布包
-`<dependency>
+```
+<dependency>
 <groupId>com.zbm.gray</groupId>
 <artifactId>springboot-gray-starter</artifactId>
 <version>1.0.0-SNAPSHOT</version>
-</dependency>`
-
+</dependency>
+```
 ####2.网关配置灰度策略
-`gray:
+```
+gray:
 loadbalancer:
 enabled: true
 weight: 20    //灰度权重20%`
-
+```
 
 ####3.灰度服务A
-`gray:
+```
+gray:
 loadbalancer:
 enabled: true
 version: 2 //灰度版本号`
-
+```
 ####4.网关接口调用
-`@Autowired
+```
+@Autowired
 @Qualifier("newRestTemplate")
 private RestTemplate restTemplate;
 @GetMapping("/testGray")
@@ -39,7 +49,8 @@ headers.add("version","2");
 HttpEntity<?> requestEntity = new HttpEntity<>(headers);
 ResponseEntity<String> exchange = restTemplate.exchange("http://test-gray/api/v1/test", HttpMethod.GET, requestEntity, String.class);
 return exchange.getBody();
-}`
+}
+```
 
 ####说明：如果调用过程中不传递version,那么不会调用到灰度服务上
 
@@ -48,5 +59,4 @@ return exchange.getBody();
 
 ###小结
 具体示例代码可见github:https://github.com/zbmzbm/gray-project
-
-​igService=http://47.103.102.35:8080
+需要sdk包的可以加我微信注明来意：zbmzbm00
