@@ -1,0 +1,15 @@
+spring:
+  cloud:
+    nacos:
+      discovery:
+        enabled: true
+        server-addr: 127.0.0.1:8848
+        namespace: promotion
+        group: promotion
+      password: nacos
+      username: nacos
+  application:
+    name: test-gray
+
+server:
+  port: 8081
