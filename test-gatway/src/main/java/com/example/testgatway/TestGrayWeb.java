@@ -26,6 +26,7 @@ public class TestGrayWeb {
     private RestTemplate restTemplate;
     @GetMapping("/testGray")
     public String testGray(){
+        //模拟前端传递版本号
         MultiValueMap<String, String> headers=new HttpHeaders();
         headers.add("version","2");
         HttpEntity<?> requestEntity = new HttpEntity<>(headers);
